@@ -1,0 +1,49 @@
+
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+    <h1>Search Results</h1>
+
+
+{% if madicine_list %}
+
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+            {%  for m in madicine_list %}
+                 <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <a href="{% url 'catalog:madicine_details' m.pk %}" > <img class="card-img-top" src="{{ m.image.url }}" alt="Card image cap"> </a>
+                  <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'catalog:madicine_details' m.pk %}" > {{ m.trade_name }} </a></h5>
+                      <br>
+                      <br>
+                      <br>
+                    <p class="card-text"> Napa 500 is a medicine used to relieve pain and to reduce fever.</p>
+
+                  </div>
+                  </div>
+                 </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+
+{% else %}
+
+<p>No Result Found</p>
+{% endif%}
+
+
+
+{% endblock content %}

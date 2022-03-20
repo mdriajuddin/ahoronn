@@ -1,0 +1,83 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+    <h1>Homepage</h1>
+
+    <!-- carusol start -->
+    <main id="homepage">
+        <section>
+            <div id="carouselExampleFade" class="carousel slide carousel-fade container" data-bs-ride="carousel">
+                <div class="carousel-inner" id="carusolInner">
+                <div class="carousel-item active">
+                    <img src="https://cdn1.arogga.com/eyJidWNrZXQiOiJhcm9nZ2EiLCJrZXkiOiJvcHRpb25cL2F0dGFjaGVkRmlsZXNXZWItXC80ZjU1NTgucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoxNDA1LCJoZWlnaHQiOjQ1MCwiZml0Ijoib3V0c2lkZSJ9fX0=" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://cdn1.arogga.com/eyJidWNrZXQiOiJhcm9nZ2EiLCJrZXkiOiJvcHRpb25cL2F0dGFjaGVkRmlsZXNXZWItXC96Y280cTIucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoxNDA1LCJoZWlnaHQiOjQ1MCwiZml0Ijoib3V0c2lkZSJ9fX0=" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://cdn1.arogga.com/eyJidWNrZXQiOiJhcm9nZ2EiLCJrZXkiOiJvcHRpb25cL2F0dGFjaGVkRmlsZXNXZWItXC90cndvcXQucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoxNDA1LCJoZWlnaHQiOjQ1MCwiZml0Ijoib3V0c2lkZSJ9fX0=" class="d-block w-100" alt="...">
+                </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+
+
+{% comment %}
+{%  for m in madicine_list %}
+
+    <img src="{{ m.image.url }}" alt="My image" width="100">
+
+    <a href="{% url 'madicine_details' m.pk %}" >   {{ m.trade_name }}        </a>
+    <hr />
+
+{% endfor %}
+{% endcomment%}
+
+
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+            {%  for m in madicine_list %}
+                 <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <a href="{% url 'catalog:madicine_details' m.pk %}" > <img class="card-img-top" src="{{ m.image.url }}" alt="Card image cap"> </a>
+                  <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'catalog:madicine_details' m.pk %}" > {{ m.trade_name }} </a></h5>
+                      <br>
+                      <br>
+                      <br>
+                    <p class="card-text"> Napa 500 is a medicine used to relieve pain and to reduce fever.</p>
+
+                  </div>
+                  </div>
+                 </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}

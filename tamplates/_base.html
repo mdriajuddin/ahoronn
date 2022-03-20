@@ -1,0 +1,137 @@
+<!-- templates/_base.html -->
+{% load static %}
+
+{% load cart_template_tags %}
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>{% block title %}Ahoronn{% endblock title %}</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/105005222e.js" crossorigin="anonymous"></script>
+
+
+
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-success navbar-fixed-top rounded" style="margin: 20px;">
+            <div class="container-fluid">
+
+
+              <a class="navbar-brand extra_nav"  href="{% url 'catalog:home' %}" >AHORONN</a>
+
+              <div class="collapse navbar-collapse text-center extra_nav_search" id="navbarTogglerDemo03">
+
+                <form class="d-flex " action="{% url 'search_result' %}">
+                  <!-- <input class="form-control rounded-pill searchBox" id="" type="search" placeholder="Search"  aria-label="Search" > -->
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+                  <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+                </form>
+
+              </div>
+
+
+                <a href="{% url 'order:order-summary' %}" class="nav-link waves-effect">
+
+                <span style="color:white"> {{ request.user|cart_item_count }} </span>
+               <i class="item fas fa-shopping-cart co" style="margin-right:5px;font-size:28px;color:rgb(193, 247, 68)"><sup class="text-info" id="countity"></sup></i>
+                 </a>
+
+
+
+                {% if user.is_authenticated %}
+                    <a  href="{% url 'account_logout' %}" class="text-white me-5">LOGOUT</a>
+                {% else %}
+                    <a  href="{% url 'account_login' %}" class="text-white me-5">LOGIN</a>
+                    <a  href="{% url 'account_signup' %}" class="text-white me-5">SIGNUP</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--{% comment %}-->
+<!--&lt;!&ndash; Fixed navbar &ndash;&gt;-->
+<!--<div>-->
+<!--    <a href="{% url 'home' %}" >Ahoronn</a>-->
+<!--    <nav >-->
+<!--        <nav >-->
+<!--            <div >-->
+<!--                <form   action="{% url 'search_result' %}"  >-->
+<!--                    <input  type="search" placeholder="Search" aria-label="Search" name="q">-->
+<!--                    <button  type="submit">Search</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </nav>-->
+<!--          <li >-->
+<!--              <a href="#{% url 'order:order-summary' %}" class="nav-link waves-effect">  -->
+
+<!--              <span > {{ request.user|cart_item_count }} </span>-->
+<!--&lt;!&ndash;              <i></i>&ndash;&gt;-->
+<!--              <span > Cart </span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--        {% if user.is_authenticated %}-->
+<!--            <a  href="{% url 'account_logout' %}">Log Out</a>-->
+<!--        {% else %}-->
+<!--            <a  href="{% url 'account_login' %}">Log In</a>-->
+<!--            <a  href="{% url 'account_signup' %}">Sign Up</a>-->
+<!--    {% endif %}-->
+<!--    </nav>-->
+<!--</div>-->
+
+<!--{% endcomment %}-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+{% block content %}
+{% endblock content %}
+</div>
+
+
+
+
+<!-- JavaScript -->
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
