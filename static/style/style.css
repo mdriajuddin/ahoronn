@@ -1,0 +1,41 @@
+.headersection{
+    width: 210px;
+}
+#catagories{
+    height: auto;
+    width: 350px;
+    /* position: sticky;
+    top: 0; */
+}
+.positonal{
+    position: sticky;
+    top: 80px;
+}
+.catagorie-img{
+    height: 25px;
+    width: 25px;
+    padding: 2px;
+    margin: 5px;
+}
+.hover_effect{
+    transition: transform 1s; 
+}
+.hover_effect:hover{
+    transform: scale(1.07);
+}
+.addTocart{
+    font-weight: 700;
+    color: rgb(0, 78, 68);
+}
+.addTocart:hover{
+    background-color: #10847e;
+    color: white;
+    border: 1px solid rgb(0, 78, 68);
+}
+.backGround{
+    background-color: #f2f5f5;
+    padding: 50px;
+}
+.backGround p{
+    margin: 5px;
+}
