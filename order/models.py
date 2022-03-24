@@ -4,14 +4,7 @@ from django.conf import settings
 from catalog.models import Madicine
 # Create your models here.
 
-#
-# class Order(models.Model):
-#     user = models.ForeignKey()
-#     items = models.ManyToManyField(OrderItem)
-#     order_date = models.DateTimeField(auto_now=True)
-#
-#
-#
+
 class OrderItem(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     ordered = models.BooleanField(default=False)

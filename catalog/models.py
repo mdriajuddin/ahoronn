@@ -23,7 +23,7 @@ class Madicine(models.Model):
     image = models.ImageField(upload_to='medicine/', null=True)
     price = models.FloatField(null=True,blank=True)
 
-    category = models.ForeignKey(Category, on_delete=models.CASCADE ,null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE ,null=True , related_name='madicines')
     generic_name = models.ForeignKey(Generic_name,on_delete=models.CASCADE ,null=True)
     creator = models.ForeignKey(settings.AUTH_USER_MODEL,  on_delete=models.CASCADE, null=True)
 

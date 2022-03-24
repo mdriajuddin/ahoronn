@@ -7,7 +7,7 @@ import uuid
 
 class Feedback(models.Model):
     id = models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False)
-    feedback_content = models.CharField(max_length=100)
+    feedback_content = models.TextField()
     datetime = models.DateTimeField(auto_now=True)
 
     madicine = models.ForeignKey(Madicine, related_name='Madicine', on_delete=models.CASCADE)

@@ -4,33 +4,22 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-    <h1>Search Results</h1>
-
 
 {% if madicine_list %}
 
-
-
-
-
-
-
-<div class="container">
+<div class="m-5 justify-content-around rounded backGround">
     <div class="row">
             {%  for m in madicine_list %}
-                 <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <a href="{% url 'catalog:madicine_details' m.pk %}" > <img class="card-img-top" src="{{ m.image.url }}" alt="Card image cap"> </a>
-                  <div class="card-body">
-                    <h5 class="card-title"><a href="{% url 'catalog:madicine_details' m.pk %}" > {{ m.trade_name }} </a></h5>
-                      <br>
-                      <br>
-                      <br>
-                    <p class="card-text"> Napa 500 is a medicine used to relieve pain and to reduce fever.</p>
+                <div class="col-md-4">
+                   <div class="card" style="width: 18rem;">
+                        <a href="{% url 'catalog:madicine_details' m.pk %}" > <img class="card-img-top" src="{{ m.image.url }}" alt="Card image cap"> </a>
+                          <div class="card-body">
+                            <h5 class="card-title"><a href="{% url 'catalog:madicine_details' m.pk %}" > {{ m.trade_name }} </a></h5>
 
-                  </div>
-                  </div>
-                 </div>
+                              <h6 class="card-text">Price: $ {{ m.price }}</h6>
+                          </div>
+                   </div>
+               </div>
         {% endfor %}
     </div>
 </div>
@@ -39,9 +28,11 @@
 
 
 
-{% else %}
 
-<p>No Result Found</p>
+{% else %}
+<div class="m-5 justify-content-around rounded backGround">
+    <h1 class="text-uppercase text-center text-danger">No Result Found</h1>
+</div>
 {% endif%}
 
 

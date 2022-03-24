@@ -5,9 +5,6 @@ from django.db import models
 
 class Pescription(models.Model):
     phone_number = models.CharField(max_length=11,null=True)
-
-
-
-class Pescription_image(models.Model):
-    image = models.ImageField(upload_to='pesceiption/', null=True)
-    p_images = models.ForeignKey(Pescription, on_delete=models.CASCADE,)
+    image = models.ImageField(upload_to='medicine/', null=True)
+    def __str__(self):
+        return self.phone_number

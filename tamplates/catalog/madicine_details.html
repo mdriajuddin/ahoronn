@@ -6,11 +6,7 @@
 {% block content %}
 
 
-
-
-    <h1>Details Page</h1>
-
-<div class="container">
+<div class="m-5  justify-content-around rounded backGround">
     <h2>{{ madicine.trade_name }}</h2>
     <div class="row">
         <div class="col-md-6"><img src="{{ madicine.image.url }}" alt="My image" width="400"></div>
@@ -31,39 +27,43 @@
 
 
 
-
-{% comment %}
-<a href="{{ madicine.get_remove_from_cart_url }}" class="btn btn-danger btn-md my-0 p">
-  Remove from cart
-</a>
-{% endcomment %}
-
-
-
-
-
-
-{% comment %}
-
-{%  for m in feedbacks %}
-        <div class="card">
-          <div class="card-body">
-
-            {{ m.feedback_content  }}
-          </div>
-        </div>
-{% endfor %}
-
-{% endcomment %}
-
-
 <br>
 <br>
 <br>
 <br>
 
-{%  for m in feedbacks %}
+
+
+
+
+<div class="m-5 justify-content-around rounded backGround">
+
+
         <h1 class="font-weight-bold">FeedBack</h1>
+
+    <form method="POST" action="{% url 'feedback:FeedbackCreate' %}">
+        {% csrf_token %}
+          <div class="form-group">
+              <input type="hidden" value="{{  madicine.pk }}" name="madicine">
+             <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <button  type="submit" class="btn btn-primary m-5">Submit</button>
+          </div>
+    </form>
+
+
+
+
+<hr>
+
+</div>
+
+
+
+<div class="m-5 justify-content-around rounded backGround">
+
+
+{%  for m in feedbacks %}
+
         <div class="card text-center">
 
           <div class="card-body">
@@ -75,6 +75,10 @@
           </div>
         </div>
 {% endfor %}
+
+</div>
+
+
 
 
 

@@ -1,6 +1,9 @@
 .headersection{
     width: 210px;
 }
+a:link {
+  text-decoration: none;
+}
 #catagories{
     height: auto;
     width: 350px;
