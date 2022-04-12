@@ -21,12 +21,12 @@
         {% for order_item in object.items.all %}
         <tr>
             <th scope="row">{{ forloop.counter }}</th>
-            <td>{{ order_item.madicine.trade_name }}</td>
-            <td>{{ order_item.madicine.price }}</td>
+            <td>{{ order_item.medicine.trade_name }}</td>
+            <td>{{ order_item.medicine.price }}</td>
             <td>
-                <a href="{% url 'order:remove-single-item-from-cart' order_item.madicine.pk %}"><i class="fas fa-minus mr-2"></i></a>
+                <a href="{% url 'order:remove-single-item-from-cart' order_item.medicine.pk %}"><i class="fas fa-minus mr-2"></i></a>
                 {{ order_item.quantity }}
-                <a href="{% url 'order:add-to-cart' order_item.madicine.pk %}"><i class="fas fa-plus ml-2"></i></a>
+                <a href="{% url 'order:add-to-cart' order_item.medicine.pk %}"><i class="fas fa-plus ml-2"></i></a>
             </td>
             <td>
             {% if order_item.item.discount_price %}
@@ -37,7 +37,7 @@
             {% endif %}
             </td>
             <td>
-                <a style='color: red;' href="{% url 'order:remove-from-cart' order_item.madicine.pk %}">
+                <a style='color: red;' href="{% url 'order:remove-from-cart' order_item.medicine.pk %}">
                 <i class="fas fa-trash float-right"></i>
             </a>
             </td>

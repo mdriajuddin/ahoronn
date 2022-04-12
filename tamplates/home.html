@@ -111,15 +111,15 @@
                  <section class="m-5">
 
                     {%  for m in Category %}
-                                        {% if  m.madicines.all  %}
+                                        {% if  m.medicines.all  %}
                                              <h1 class="text-success my-5">  {{ m.category_title}} </h1>
                                                 <div class="row">
-                                               {% for i in  m.madicines.all %}
+                                               {% for i in  m.medicines.all %}
                                                        <div class="col-md-4">
                                                            <div class="card" style="width: 18rem;">
-                                                                <a href="{% url 'catalog:madicine_details' i.pk %}" > <img class="card-img-top" src="{{ i.image.url }}" alt="Card image cap"> </a>
+                                                                <a href="{% url 'catalog:medicine_details' i.pk %}" > <img class="card-img-top" src="{{ i.image.url }}" alt="Card image cap"> </a>
                                                                   <div class="card-body">
-                                                                    <h5 class="card-title"><a href="{% url 'catalog:madicine_details' i.pk %}" > {{ i.trade_name }} </a></h5>
+                                                                    <h5 class="card-title"><a href="{% url 'catalog:medicine_details' i.pk %}" > {{ i.trade_name }} </a></h5>
 
                                                                       <h6 class="card-text">Price: $ {{ i.price }}</h6>
                                                                   </div>

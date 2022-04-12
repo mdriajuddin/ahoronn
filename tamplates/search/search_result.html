@@ -5,16 +5,16 @@
 
 {% block content %}
 
-{% if madicine_list %}
+{% if medicine_list %}
 
 <div class="m-5 justify-content-around rounded backGround">
     <div class="row">
-            {%  for m in madicine_list %}
+            {%  for m in medicine_list %}
                 <div class="col-md-4">
                    <div class="card" style="width: 18rem;">
-                        <a href="{% url 'catalog:madicine_details' m.pk %}" > <img class="card-img-top" src="{{ m.image.url }}" alt="Card image cap"> </a>
+                        <a href="{% url 'catalog:medicine_details' m.pk %}" > <img class="card-img-top" src="{{ m.image.url }}" alt="Card image cap"> </a>
                           <div class="card-body">
-                            <h5 class="card-title"><a href="{% url 'catalog:madicine_details' m.pk %}" > {{ m.trade_name }} </a></h5>
+                            <h5 class="card-title"><a href="{% url 'catalog:medicine_details' m.pk %}" > {{ m.trade_name }} </a></h5>
 
                               <h6 class="card-text">Price: $ {{ m.price }}</h6>
                           </div>

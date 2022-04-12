@@ -10,12 +10,17 @@ import uuid
 class Category(models.Model):
     category_title = models.CharField(max_length=20)
 
+    def __str__(self):
+        return self.category_title
+
 
 class Generic_name(models.Model):
     generic_name = models.CharField(max_length=50)
+    def __str__(self):
+        return self.generic_name
 
 
-class Madicine(models.Model):
+class Medicine(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     trade_name = models.CharField(max_length=40)
@@ -23,7 +28,7 @@ class Madicine(models.Model):
     image = models.ImageField(upload_to='medicine/', null=True)
     price = models.FloatField(null=True,blank=True)
 
-    category = models.ForeignKey(Category, on_delete=models.CASCADE ,null=True , related_name='madicines')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE ,null=True , related_name='medicines')
     generic_name = models.ForeignKey(Generic_name,on_delete=models.CASCADE ,null=True)
     creator = models.ForeignKey(settings.AUTH_USER_MODEL,  on_delete=models.CASCADE, null=True)
 
@@ -32,7 +37,7 @@ class Madicine(models.Model):
         return self.trade_name
 
     def get_absolute_url(self):
-        return reverse('catalog:madicine_details',kwargs={'pk': self.id})
+        return reverse('catalog:medicine_details',kwargs={'pk': self.id})
 
     def get_add_to_cart_url(self):
         return reverse('order:add-to-cart', kwargs={'pk': self.id})

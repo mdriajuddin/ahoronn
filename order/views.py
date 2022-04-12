@@ -10,7 +10,7 @@ from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from django.views.generic import ListView, DetailView, View
 
-from catalog.models import Madicine as Medicine
+from catalog.models import  Medicine
 from .models import OrderItem, Order
 
 
@@ -41,9 +41,9 @@ class OrderSummaryView(LoginRequiredMixin, View):
 @login_required
 def add_to_cart(request, pk):
     print(pk)
-    madicine = get_object_or_404(Medicine, pk=pk)
+    medicine = get_object_or_404(Medicine, pk=pk)
     order_item, created = OrderItem.objects.get_or_create(
-        madicine=madicine,
+        medicine=medicine,
         user=request.user,
         ordered=False
 
@@ -52,7 +52,7 @@ def add_to_cart(request, pk):
     if order_qs.exists():
         order = order_qs[0]
         # check if the order item is in the order
-        if order.items.filter(madicine__pk=madicine.pk).exists():
+        if order.items.filter(medicine__pk=medicine.pk).exists():
             order_item.quantity += 1
             order_item.save()
             messages.info(request, "This item quantity was updated.")
@@ -76,7 +76,7 @@ def add_to_cart(request, pk):
 
 @login_required
 def remove_from_cart(request, pk):
-    madicine = get_object_or_404(Medicine, pk=pk)
+    medicine = get_object_or_404(Medicine, pk=pk)
     order_qs = Order.objects.filter(
         user=request.user,
         ordered=False
@@ -84,9 +84,9 @@ def remove_from_cart(request, pk):
     if order_qs.exists():
         order = order_qs[0]
         # check if the order item is in the order
-        if order.items.filter(madicine__pk=madicine.pk).exists():
+        if order.items.filter(medicine__pk=medicine.pk).exists():
             order_item = OrderItem.objects.filter(
-                madicine=madicine,
+                medicine=medicine,
                 user=request.user,
                 ordered=False
             )[0]
@@ -96,10 +96,10 @@ def remove_from_cart(request, pk):
             return redirect("order:order-summary")
         else:
             messages.info(request, "This item was not in your cart")
-            return redirect("catalog:madicine_details", pk=pk)
+            return redirect("catalog:medicine_details", pk=pk)
     else:
         messages.info(request, "You do not have an active order")
-        return redirect("catalog:madicine_details", pk=pk)
+        return redirect("catalog:medicine_details", pk=pk)
 
 
 
@@ -108,7 +108,7 @@ def remove_from_cart(request, pk):
 
 @login_required
 def remove_single_item_from_cart(request, pk):
-    madicine = get_object_or_404(Medicine, pk=pk)
+    medicine = get_object_or_404(Medicine, pk=pk)
     order_qs = Order.objects.filter(
         user=request.user,
         ordered=False
@@ -116,9 +116,9 @@ def remove_single_item_from_cart(request, pk):
     if order_qs.exists():
         order = order_qs[0]
         # check if the order item is in the order
-        if order.items.filter(madicine__pk=madicine.pk).exists():
+        if order.items.filter(medicine__pk=medicine.pk).exists():
             order_item = OrderItem.objects.filter(
-                madicine=madicine,
+                medicine=medicine,
                 user=request.user,
                 ordered=False
             )[0]
@@ -131,7 +131,7 @@ def remove_single_item_from_cart(request, pk):
             return redirect("order:order-summary")
         else:
             messages.info(request, "This item was not in your cart")
-            return redirect("catalog:madicine_details", pk=pk)
+            return redirect("catalog:medicine_details", pk=pk)
     else:
         messages.info(request, "You do not have an active order")
-        return redirect("catalog:madicine_details", pk=pk)
+        return redirect("catalog:medicine_details", pk=pk)

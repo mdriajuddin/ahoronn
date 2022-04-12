@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 # Create your models here.
-from catalog.models import Madicine
+from catalog.models import Medicine
 
 import uuid
 
@@ -10,7 +10,7 @@ class Feedback(models.Model):
     feedback_content = models.TextField()
     datetime = models.DateTimeField(auto_now=True)
 
-    madicine = models.ForeignKey(Madicine, related_name='Madicine', on_delete=models.CASCADE)
+    medicine = models.ForeignKey(Medicine, related_name='Medicine', on_delete=models.CASCADE)
 
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
 

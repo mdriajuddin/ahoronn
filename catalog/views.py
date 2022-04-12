@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 
-from .models import Madicine,Category
+from .models import Medicine,Category
 
 
 from django.views.generic import ListView, DetailView
@@ -24,10 +24,10 @@ class HomeView(ListView):
     #     return context
 
 
-class MadicineDetails(DetailView):
-    model = Madicine
-    context_object_name = "madicine"
-    template_name = 'catalog/madicine_details.html'
+class MedicineDetails(DetailView):
+    model = Medicine
+    context_object_name = "medicine"
+    template_name = 'catalog/medicine_details.html'
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
@@ -36,6 +36,6 @@ class MadicineDetails(DetailView):
         # Add in a QuerySet of all the books
 
         # TODO correct the Name
-        context['feedbacks'] = medicine.Madicine.all()
+        context['feedbacks'] = medicine.Medicine.all()
         # TODO related_medicine
         return context

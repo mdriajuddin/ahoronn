@@ -1,25 +1,25 @@
 from django.db import models
 
 from django.conf import settings
-from catalog.models import Madicine
+from catalog.models import Medicine
 # Create your models here.
 
 
 class OrderItem(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     ordered = models.BooleanField(default=False)
-    madicine = models.ForeignKey( Madicine,on_delete=models.CASCADE)
+    medicine = models.ForeignKey( Medicine,on_delete=models.CASCADE)
 
     quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):
-        return f"{self.quantity} of {self.madicine.trade_name} "
+        return f"{self.quantity} of {self.medicine.trade_name} "
 
 
 
 
     def get_total_item_price(self):
-        return self.quantity * self.madicine.price
+        return self.quantity * self.medicine.price
 
     # def get_total_discount_item_price(self):
     #     return self.quantity * self.item.discount_price

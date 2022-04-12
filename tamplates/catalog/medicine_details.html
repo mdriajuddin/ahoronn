@@ -7,17 +7,17 @@
 
 
 <div class="m-5  justify-content-around rounded backGround">
-    <h2>{{ madicine.trade_name }}</h2>
+    <h2>{{ medicine.trade_name }}</h2>
     <div class="row">
-        <div class="col-md-6"><img src="{{ madicine.image.url }}" alt="My image" width="400"></div>
+        <div class="col-md-6"><img src="{{ medicine.image.url }}" alt="My image" width="400"></div>
         <div class="col-md-6">
-             <a href="{{ madicine.get_add_to_cart_url }}" class="btn btn-primary btn-md my-0 p">
+             <a href="{{ medicine.get_add_to_cart_url }}" class="btn btn-primary btn-md my-0 p">
               Add to cart
             </a>
             <br>
             <br>
             <br>
-            <p>{{ madicine.description }}</p>
+            <p>{{ medicine.description }}</p>
         </div>
     </div>
 </div>
@@ -44,7 +44,7 @@
     <form method="POST" action="{% url 'feedback:FeedbackCreate' %}">
         {% csrf_token %}
           <div class="form-group">
-              <input type="hidden" value="{{  madicine.pk }}" name="madicine">
+              <input type="hidden" value="{{  medicine.pk }}" name="medicine">
              <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3"></textarea>
             <button  type="submit" class="btn btn-primary m-5">Submit</button>
           </div>
