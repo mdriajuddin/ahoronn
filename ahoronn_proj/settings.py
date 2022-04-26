@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'allauth', # new
     'allauth.account', # new
+    'allauth.socialaccount',
 
 
     #Local
@@ -52,7 +53,8 @@ INSTALLED_APPS = [
     'feedback',
     'order',
     'search',
-    'pescription'
+    'pescription',
+    'customer',
 
 ]
 
@@ -63,7 +65,7 @@ CRISPY_TEMPLATE_PACK = 'uni_form'
 SITE_ID = 1 # new
 
 LOGIN_REDIRECT_URL = 'catalog:home'
-ACCOUNT_LOGOUT_REDIRECT = 'home' # new
+ACCOUNT_LOGOUT_REDIRECT = 'catalog:home' # new
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -78,7 +80,7 @@ ACCOUNT_UNIQUE_EMAIL = True # new
 
 
 
-
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 MIDDLEWARE = [
@@ -96,7 +98,7 @@ ROOT_URLCONF = 'ahoronn_proj.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,"Tamplates")],
+        'DIRS': [os.path.join(BASE_DIR,"tamplates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -170,7 +172,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
 
 
 

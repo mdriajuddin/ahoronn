@@ -11,7 +11,7 @@ def PescriptionCreateView(request):
         pescription = request.FILES['pescription']
 
         print(pescription)
-        if [number, pescription] is not None:
-            Pescription.objects.create(phone_number=number, image=pescription)
-            return redirect('catalog:home')
+
+        Pescription.objects.create(phone_number=number, image=pescription)
+        return redirect('customer:profile')
 

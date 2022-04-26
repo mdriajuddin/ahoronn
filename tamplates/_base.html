@@ -12,15 +12,20 @@
     <script src="https://kit.fontawesome.com/105005222e.js" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="{% static 'style/style.css' %}">
+<link rel="stylesheet" href="{% static 'style/profile.css' %}">
 
 
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-success navbar-fixed-top rounded" style="margin: 20px;">
+
+
+
+
+
+
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-success navbar-fixed-top  rounded" style="margin: 20px;">
             <div class="container-fluid">
-
-
               <a class="navbar-brand extra_nav"  href="{% url 'catalog:home' %}" >AHORONN</a>
 
               <div class="collapse navbar-collapse text-center extra_nav_search" id="navbarTogglerDemo03">
@@ -43,6 +48,7 @@
 
 
                 {% if user.is_authenticated %}
+                    <a  href="{% url 'customer:profile' %}" class="text-white me-5"><i class="fa fa-user"></i></a>
                     <a  href="{% url 'account_logout' %}" class="text-white me-5">LOGOUT</a>
                 {% else %}
                     <a  href="{% url 'account_login' %}" class="text-white me-5">LOGIN</a>
@@ -50,7 +56,7 @@
                 {% endif %}
             </div>
         </nav>
-    </header>
+
 
 
 

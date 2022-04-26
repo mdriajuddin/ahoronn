@@ -7,8 +7,8 @@ a:link {
 #catagories{
     height: auto;
     width: 350px;
-    /* position: sticky;
-    top: 0; */
+     position: sticky;
+    top: 0;
 }
 .positonal{
     position: sticky;
@@ -41,4 +41,10 @@ a:link {
 }
 .backGround p{
     margin: 5px;
+}
+
+/*------------login------------------*/
+#login{
+margin-left:100px;
+
 }

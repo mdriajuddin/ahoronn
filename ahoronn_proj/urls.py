@@ -32,8 +32,9 @@ urlpatterns = [
     path('', include('catalog.urls')),
     path('search/', include('search.urls')),
     path('feedback/', include('feedback.urls')),
-    #path('pescription/',include('pescription.urls')),
-    path('order/', include('order.urls'))
+    path('pescription/',include('pescription.urls')),
+    path('order/', include('order.urls')),
+    path('profile/',include('customer.urls')),
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

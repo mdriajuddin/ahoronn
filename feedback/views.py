@@ -12,7 +12,7 @@ class FeedbackCreateView(View):
     def post(self,request,*args, **kwargs):
         content = self.request.POST.get('content')
         if content is not None:
-            madicine = self.request.POST.get('madicine')
+            medicine = self.request.POST.get('medicine')
             m = Medicine.objects.get(pk=medicine)
             Feedback.objects.create(feedback_content=content,creator=request.user,medicine=m)
             return redirect('catalog:medicine_details', m.pk)

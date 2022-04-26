@@ -30,7 +30,9 @@ class OrderSummaryView(LoginRequiredMixin, View):
 
 
 
-
+class CheckoutView(LoginRequiredMixin,View):
+    def get(self,*args,**kwargs):
+        return render(self.request,'order/checkout.html')
 
 
 

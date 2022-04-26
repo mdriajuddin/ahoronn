@@ -10,7 +10,7 @@ class Feedback(models.Model):
     feedback_content = models.TextField()
     datetime = models.DateTimeField(auto_now=True)
 
-    medicine = models.ForeignKey(Medicine, related_name='Medicine', on_delete=models.CASCADE)
+    medicine = models.ForeignKey(Medicine, related_name='feedback', on_delete=models.CASCADE)
 
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
 
